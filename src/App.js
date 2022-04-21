@@ -57,7 +57,7 @@ function App() {
             {
                 users.map(item => <UserCard key={item.id} users={item} />)
             }
-            <h2>Main data:</h2>
+            <h2>Main data</h2>
             {
                 mainData.map((item, index) => <div key={index}>{item}</div>)
             }
