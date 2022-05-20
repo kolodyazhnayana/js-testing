@@ -10,11 +10,13 @@ function App() {
             let res = await fetch('https://jsonplaceholder.typicode.com/users')
             if (res.ok) {
                 let data = await res.json()
+
                 // every other element
                 let filterData = data.filter(item => item.id % 2 === 0)
                 setUsers(filterData)
+
                 // every third element -> address.geo.lat === null and address.geo.lng === null
-                data.map(item => {
+                data.forEach(item => {
                     if (item.id % 3 === 0) {
                         item.address.geo.lat = null
                         item.address.geo.lng = null
@@ -55,7 +57,7 @@ function App() {
             }
             <h2>Users</h2>
             {
-                users.map(item => <UserCard key={item.id} users={item} />)
+                users.map(item => <UserCard key={item.id} {...item} />)
             }
             <h2>Main data</h2>
             {
